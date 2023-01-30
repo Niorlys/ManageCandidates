@@ -3,6 +3,13 @@
 from odoo import models, fields, api
 
 
+class Candidate(models.Model):
+    _inherit = "res.partner"
+
+    plus_ids = fields.Many2many("plus.techs")
+    skill_ids = fields.One2many("convocatory.skill", "candidate_id")
+    convocatory_id = fields.Many2one("recruitment.convocatory")
+
 class Recruitment_Convocatory(models.Model):
     _name = 'recruitment.convocatory'
     _description = 'Convocatory to start a recruitment process.'
@@ -16,6 +23,8 @@ class Recruitment_Convocatory(models.Model):
                                     ('H', 'Hiring'),('OB', 'Onboarding'),('C','Canceled')],copy = False, default = "N")
     costs = fields.Monetary("Estimated costs", "currency_id", copy=False)
     currency_id = fields.Many2one("res.currency")
+    candidate_ids = fields.One2many("res.partner", 'convocatory_id')
+    job_id = fields.Many2many("convocatory.job")
 
 
 
@@ -45,10 +54,4 @@ class PlusTechs(models.Model):
     _description="Development enviroment tools"
 
     name = fields.Char()
-
-class Candidate(models.Model):
-    _inherit = "res.partner"
-
-    plus_ids = fields.Many2many("plus.techs")
-    skill_ids = fields.One2many("convocatory.skill", "candidate_id")
 

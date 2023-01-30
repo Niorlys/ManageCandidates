@@ -5,3 +5,5 @@ access_job_user,JobUser,model_convocatory_job,staff_recruitment_group_user,1,1,1
 access_job_manager,JobManager,model_convocatory_job,staff_recruitment_group_manager,1,1,1,1
 access_skill_user,SkillUser,model_convocatory_skill,staff_recruitment_group_user,1,1,1,0
 access_skill_manager,SkillManager,model_convocatory_skill,staff_recruitment_group_manager,1,1,1,1
+access_plus_user,plusUser,model_plus_techs,staff_recruitment_group_user,1,1,1,0
+access_plus_manager,plusManager,model_plus_techs,staff_recruitment_group_manager,1,1,1,1
