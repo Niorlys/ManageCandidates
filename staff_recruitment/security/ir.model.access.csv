@@ -1,2 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_staff_recruitment_staff_recruitment,staff_recruitment.staff_recruitment,model_staff_recruitment_staff_recruitment,base.group_user,1,1,1,1
+access_staff_user,StaffUser,model_recruitment_convocatory,staff_recruitment_group_user,1,1,1,0
+access_staff_manager,staffrManager,model_recruitment_convocatory,staff_recruitment_group_manager,1,1,1,1
+access_job_user,JobUser,model_convocatory_job,staff_recruitment_group_user,1,1,1,0
+access_job_manager,JobManager,model_convocatory_job,staff_recruitment_group_manager,1,1,1,1
+access_skill_user,SkillUser,model_convocatory_skill,staff_recruitment_group_user,1,1,1,0
+access_skill_manager,SkillManager,model_convocatory_skill,staff_recruitment_group_manager,1,1,1,1

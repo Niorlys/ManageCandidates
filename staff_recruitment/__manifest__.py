@@ -14,7 +14,7 @@
 
     'author': "Niorlys Ernesto Campos",
 
-    'category': 'Human Resources/RecruitmentDevelopment',
+    'category': 'Human Resources/Recruitment Development',
     'version': '0.1',
 
     'license':'LGPL-3',
@@ -24,7 +24,8 @@
     "application": True,
 
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/staff_recruitment_security.xml',
+        'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
     ],
