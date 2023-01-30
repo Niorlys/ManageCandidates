@@ -26,6 +26,8 @@
     'data': [
         'security/staff_recruitment_security.xml',
         'security/ir.model.access.csv',
+        'views/recruitment_convocatory_views.xml',
+        'views/candidate_views.xml',
         'views/views.xml',
         'views/templates.xml',
     ],

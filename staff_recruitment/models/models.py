@@ -14,7 +14,7 @@ class Recruitment_Convocatory(models.Model):
     strategy = fields.Selection(string = 'Strategy', selection=[('T','Training'), ('O','From outside'), ('RS', 'Recruitment Sources')])
     state = fields.Selection(string="Status", selection=[('N', 'New'), ('T','Testing'), ('I','Interview'),('S','Selecting'),
                                     ('H', 'Hiring'),('OB', 'Onboarding'),('C','Canceled')],copy = False, default = "N")
-    costs = fields.Monetary("Estimated costs", "currency_id")
+    costs = fields.Monetary("Estimated costs", "currency_id", copy=False)
     currency_id = fields.Many2one("res.currency")
 
 
@@ -38,3 +38,17 @@ class Skill(models.Model):
     name = fields.Char(required=True)
     experience = fields.Integer(string="Experience (years)")
     job_id = fields.Many2one("convocatory.job")
+    candidate_id = fields.Many2one("res.partner")
+
+class PlusTechs(models.Model):
+    _name="plus.techs"
+    _description="Development enviroment tools"
+
+    name = fields.Char()
+
+class Candidate(models.Model):
+    _inherit = "res.partner"
+
+    plus_ids = fields.Many2many("plus.techs")
+    skill_ids = fields.One2many("convocatory.skill", "candidate_id")
+

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Action for custom model-->
+    <record id="recruitment_convocatory_action" model="ir.actions.act_window"> 
+        <field name="name">Convocatories</field>
+        <field name="res_model">recruitment.convocatory</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem name="Staff Recruitment" id="estaff_recuitment_base_menu"/>
+    <menuitem name="Recruit" id="recruitment_convocatory_menu" parent="estaff_recuitment_base_menu"/>
+    <menuitem name="Convocatories" id="convocatories_menu" parent="recruitment_convocatory_menu" action="recruitment_convocatory_action"/>
+
+    
+    <!--List-->
+    <record id="recruitment_convocatory_view_tree" model="ir.ui.view">
+        <field name="name">Convocatories</field>
+        <field name="model">recruitment.convocatory</field>
+        <field name="arch" type="xml">
+        <tree decoration-success="state in ['OR','OA']" decoration-bf="state=='OA'" decoration-muted="state=='S'">
+            <field name="name"/>
+            <field name="state" invisible="1"></field>
+            <field name="description"></field>
+            <field name="vacancies"></field>
+            <field name="costs"></field>
+            <field name="recruiter_id"></field>
+            <field name="strategy"></field>
+        </tree>
+        </field>
+    </record>
+
+    <!--Form-->
+    <record id="recruitment_convocatory_view_form" model="ir.ui.view">
+        <field name="name">Convocatory Form</field>
+        <field name="model">recruitment.convocatory</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                <field name="state" widget="statusbar" options="{'clickable': '1'}" statusbar_visible='N,T,I,S,H,OB'></field>
+                <!--<button name="cancel_property" type="object" string="Cancel" states='N,OR,OA'/>-->
+                <!--<button name="set_property_as_sold" type="object" string="Sold" states='N,OR,OA'/>-->
+                </header>
+                <h1><field name="name"/></h1>
+                <group> 
+                    <group>                    
+                        <field name="vacancies"></field>
+                        <field name="costs"></field>
+                    </group>
+                    <group>
+                        <field name="recruiter_id" options="{'no_create': True}">Recruiter</field>
+                        <field name="strategy"/>
+                    </group>
+                </group>
+                <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description" string=""/>
+                            </group>
+                        </page>
+                    </notebook>
+            </form>
+        </field>
+    </record>
+
+
+
+    <!--Search-->
+    <record id="recruitment_convocatory_view_search" model="ir.ui.view">
+        <field name="name">Convocatory Search</field>
+        <field name="model">recruitment.convocatory</field>
+        <field name="arch" type="xml">
+            <search string="Convocatory">
+                <field name="name"/>
+                <field name="vacancies" filter_domain="[('vacancies', '>=', self)]"/>
+                <filter name="state" string="Fresh" domain="[('state','=','N')]"/>
+                <filter name="groupby_strategy" string="Strategy" context="{'group_by': 'strategy'}"/>
+            </search>
+        </field>
+    </record>
+    
+
+</odoo>
