@@ -48,6 +48,7 @@ class Recruitment_Convocatory(models.Model):
 class Experience(models.Model):
     _name="candidate.experience"
     _description="Candidate's experience for certain technology"
+    _order="experience desc"
 
     experience = fields.Integer(required=True)
     tech = fields.Many2one("convocatory.skill")
@@ -77,4 +78,11 @@ class PlusTechs(models.Model):
 
     name = fields.Char()
     color = fields.Integer()
+
+class Report(models.Model):
+    _name='skill.report'
+    _description="Model to reports"
+
+    tech = fields.Many2one("convocatory.skill")
+    
 

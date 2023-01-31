@@ -31,8 +31,9 @@
         'views/candidate_views.xml',
         'views/job_views.xml',
         'views/experience_views.xml',
-        #'report/report_templates.xml',
-        #'report/report_views.xml',
+        'report/report_templates.xml',
+        'report/report_views.xml',
+        'views/report_model_views.xml',
     ],
 
     'demo': [
