@@ -9,6 +9,8 @@ class Candidate(models.Model):
     plus_ids = fields.Many2many("plus.techs")
     skill_ids = fields.One2many("convocatory.skill", "candidate_id")
     convocatory_id = fields.Many2one("recruitment.convocatory")
+    cv = fields.Binary()
+    candidate = fields.Boolean(default = True)
 
 class Recruitment_Convocatory(models.Model):
     _name = 'recruitment.convocatory'

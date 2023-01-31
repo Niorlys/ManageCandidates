@@ -15,13 +15,15 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_tree"/>
         <field name="arch" type="xml">
-            <field name="user_id" position="replace">
-                <field name="skill_ids"></field>       
+            <field name="user_id" position="attributes">
+                <attribute name="invisible">1</attribute>     
             </field>
             <field name="city" position="replace">
                 <field name="plus_ids" widget="many2many_tags"></field>
             </field>
-            <field name="country_id" position="replace"></field>
+            <field name="country_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
         </field>
     </record>
 

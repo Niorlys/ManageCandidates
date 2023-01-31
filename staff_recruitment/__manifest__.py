@@ -27,8 +27,8 @@
         'security/staff_recruitment_security.xml',
         'security/ir.model.access.csv',
         'views/recruitment_convocatory_views.xml',
-        'views/candidate_views.xml',
         'views/skill_views.xml',
+        'views/candidate_views.xml',
         'views/job_views.xml',
     ],
 
