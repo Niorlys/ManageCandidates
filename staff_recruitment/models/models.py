@@ -25,6 +25,7 @@ class Recruitment_Convocatory(models.Model):
     currency_id = fields.Many2one("res.currency")
     candidate_ids = fields.One2many("res.partner", 'convocatory_id')
     job_id = fields.Many2many("convocatory.job")
+    color = fields.Integer()
 
 
 

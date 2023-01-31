@@ -8,7 +8,7 @@
     </record>
 
 
-    <menuitem name="Staff Recruitment" id="estaff_recuitment_base_menu"/>
+    <menuitem name="Staff Recruitment" id="estaff_recuitment_base_menu" web_icon="staff_recruitment,static/description/index.png"/>
     <menuitem name="Recruit" id="recruitment_convocatory_menu" parent="estaff_recuitment_base_menu"/>
     <menuitem name="Convocatories" id="convocatories_menu" parent="recruitment_convocatory_menu" action="recruitment_convocatory_action"/>
 
