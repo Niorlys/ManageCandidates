@@ -34,7 +34,7 @@ class Job(models.Model):
     title = fields.Char(required=True)
     location = fields.Char()
     mode = fields.Selection(string="Mode", selection=[('R', 'Remote'), ('H','Hybrid'), ('P','In Person')],copy = False, default = "R")
-    job_description = fields.Text()
+    job_description = fields.Html()
     skill_ids = fields.One2many("convocatory.skill", "job_id")
     deadline = fields.Date()
     salary = fields.Monetary("Salary", "currency_id")

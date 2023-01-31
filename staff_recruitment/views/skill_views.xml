@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="skill_action" model="ir.actions.act_window"> 
+        <field name="name">Skill</field>
+        <field name="res_model">convocatory.skill</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="skill_view_tree" model="ir.ui.view">
+        <field name="name">Skill Tree</field>
+        <field name="model">convocatory.skill</field>
+        <field name="arch" type="xml">
+        <tree>
+            <field name="name"/>
+            <field name="experience"></field>
+        </tree>
+        </field>
+    </record>
+
+    <record id="skill_view_form" model="ir.ui.view">
+        <field name="name">Skill Form</field>
+        <field name="model">convocatory.skill</field>
+        <field name="arch" type="xml">
+            <form>
+                <h1><field name="name"/></h1>
+                <field name="experience"></field>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>
+

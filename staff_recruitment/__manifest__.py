@@ -28,8 +28,8 @@
         'security/ir.model.access.csv',
         'views/recruitment_convocatory_views.xml',
         'views/candidate_views.xml',
-        'views/views.xml',
-        'views/templates.xml',
+        'views/skill_views.xml',
+        'views/job_views.xml',
     ],
 
     'demo': [
