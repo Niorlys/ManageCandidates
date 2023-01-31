@@ -9,7 +9,7 @@ class Candidate(models.Model):
     _order="id desc"
 
     plus_ids = fields.Many2many("plus.techs")
-    skill_ids = fields.One2many("convocatory.skill", "candidate_id")
+    experience_ids = fields.One2many("candidate.experience", "candidate_id")
     convocatory_id = fields.Many2one("recruitment.convocatory")
     candidate = fields.Boolean(default = False)
     age = fields.Integer(string='Age')
@@ -45,7 +45,13 @@ class Recruitment_Convocatory(models.Model):
         self.state="C"
         return True
 
+class Experience(models.Model):
+    _name="candidate.experience"
+    _description="Candidate's experience for certain technology"
 
+    experience = fields.Integer(required=True)
+    tech = fields.Many2one("convocatory.skill")
+    candidate_id = fields.Many2one("res.partner")
 
 class Job(models.Model):
     _name ="convocatory.job"
@@ -54,7 +60,7 @@ class Job(models.Model):
     location = fields.Char()
     mode = fields.Selection(string="Mode", selection=[('R', 'Remote'), ('H','Hybrid'), ('P','In Person')],copy = False, default = "R")
     job_description = fields.Html()
-    skill_ids = fields.One2many("convocatory.skill", "job_id")
+    skill_ids = fields.Many2many("convocatory.skill")
     deadline = fields.Date()
     salary = fields.Monetary("Salary", "currency_id")
     currency_id = fields.Many2one("res.currency")
@@ -64,9 +70,6 @@ class Skill(models.Model):
     _name="convocatory.skill"
     _description="Technology"
     name = fields.Char(required=True)
-    experience = fields.Integer(string="Experience (years)")
-    job_id = fields.Many2one("convocatory.job")
-    candidate_id = fields.Many2one("res.partner")
 
 class PlusTechs(models.Model):
     _name="plus.techs"

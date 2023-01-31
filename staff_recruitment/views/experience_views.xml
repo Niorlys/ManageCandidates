@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="experience_action" model="ir.actions.act_window"> 
+        <field name="name">Experience</field>
+        <field name="res_model">candidate.experience</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">inline</field>
+    </record>
+
+    <record id="experience_view_tree" model="ir.ui.view">
+        <field name="name">Experience Tree</field>
+        <field name="model">candidate.experience</field>
+        <field name="arch" type="xml">
+        <tree>
+            <field name="tech"/>
+            <field name="experience"></field>
+        </tree>
+        </field>
+    </record>
+
+    <record id="experience_view_form" model="ir.ui.view">
+        <field name="name">Experience Form</field>
+        <field name="model">candidate.experience</field>
+        <field name="arch" type="xml">
+            <form>
+                <h1><field name="tech"/></h1>
+                <field name="experience"></field>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>
+

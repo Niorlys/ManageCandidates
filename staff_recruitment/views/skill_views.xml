@@ -8,13 +8,14 @@
         <field name="target">inline</field>
     </record>
 
+    <menuitem name="Technologies" id="skills_menu" parent="estaff_recuitment_base_menu" action="skill_action"/>
+
     <record id="skill_view_tree" model="ir.ui.view">
         <field name="name">Skill Tree</field>
         <field name="model">convocatory.skill</field>
         <field name="arch" type="xml">
         <tree>
             <field name="name"/>
-            <field name="experience"></field>
         </tree>
         </field>
     </record>
@@ -25,7 +26,6 @@
         <field name="arch" type="xml">
             <form>
                 <h1><field name="name"/></h1>
-                <field name="experience"></field>
             </form>
         </field>
     </record>

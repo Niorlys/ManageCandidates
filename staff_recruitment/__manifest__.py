@@ -30,6 +30,9 @@
         'views/skill_views.xml',
         'views/candidate_views.xml',
         'views/job_views.xml',
+        'views/experience_views.xml',
+        #'report/report_templates.xml',
+        #'report/report_views.xml',
     ],
 
     'demo': [
