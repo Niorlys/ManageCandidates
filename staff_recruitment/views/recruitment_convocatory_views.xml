@@ -37,8 +37,7 @@
             <form>
                 <header>
                 <field name="state" widget="statusbar" options="{'clickable': '1'}" statusbar_visible='N,T,I,S,H,OB'></field>
-                <!--<button name="cancel_property" type="object" string="Cancel" states='N,OR,OA'/>-->
-                <!--<button name="set_property_as_sold" type="object" string="Sold" states='N,OR,OA'/>-->
+                <button name="cancel_convocatory" type="object" string="Cancel" states='N,T,I'/>
                 </header>
                 <h1><field name="name"/></h1>
                 <group> 

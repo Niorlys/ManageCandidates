@@ -2,10 +2,11 @@
 <odoo>
 
     <record id="candidate_action" model="ir.actions.act_window"> 
-        <field name="name">Skill</field>
+        <field name="name">Candidates</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
         <field name="limit">10</field>
+        <field name="context">{"default_function" : "Developer", "search_default_candidate": True}</field>
     </record>
 
     <menuitem name="Candidates" id="candidates_menu" parent="estaff_recuitment_base_menu" action="candidate_action"/>
@@ -19,7 +20,8 @@
                 <attribute name="invisible">1</attribute>     
             </field>
             <field name="city" position="replace">
-                <field name="plus_ids" widget="many2many_tags"></field>
+                <field name="plus_ids" widget="many2many_tags"  options="{'color_field': 'color'}"></field>
+                <field name="candidate" invisible="1"></field>
             </field>
             <field name="country_id" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -31,6 +33,7 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
+
             <field name="category_id" position="replace">
                 <field name="plus_ids" widget="many2many_tags"></field>
             </field>
@@ -44,14 +47,35 @@
                 <attribute name="invisible">1</attribute>
             </field>
 
+            <field name="vat" position="after">
+                <field name="ci"></field>
+                <field name="age"></field>
+            </field>
+
             <xpath expr="//form/sheet/notebook" position="replace">
                 <notebook>
                     <page  string="Skills">
-                        <field name="skill_ids"></field>
+                        <field name="skill_ids">
+                             <tree string="Skills" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="experience"/>
+                            </tree>
+                        </field>
                     </page>
                 </notebook>
             </xpath>
         </field>
     </record>
+
+    <!--<record id="partner_view_search_extended" model="ir.ui.view">
+        <field name="name">Partner search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="xxxx"></field>   
+            </field>
+        </field>
+    </record>-->
 
 </odoo>

@@ -41,7 +41,12 @@
                                 <field name="job_description"/>
                         </page>
                         <page string="Skills-Experience">
-                            <field name="skill_ids"></field><!--Inser view insite page-->
+                            <field name="skill_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="experience"/>
+                                </tree>
+                            </field>
                         </page>
                 </notebook>
             </form>

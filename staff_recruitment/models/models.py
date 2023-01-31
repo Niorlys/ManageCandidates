@@ -1,16 +1,28 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError, UserError
 
 
 class Candidate(models.Model):
     _inherit = "res.partner"
+    _order="id desc"
 
     plus_ids = fields.Many2many("plus.techs")
     skill_ids = fields.One2many("convocatory.skill", "candidate_id")
     convocatory_id = fields.Many2one("recruitment.convocatory")
-    cv = fields.Binary()
-    candidate = fields.Boolean(default = True)
+    candidate = fields.Boolean(default = False)
+    age = fields.Integer(string='Age')
+    ci = fields.Char(string="DNI")
+
+    _sql_constraints = [('check_ci', 'UNIQUE(ci)',f'There is a candidate with the same CI')]
+
+    @api.constrains('age')
+    def _check_age(self):
+        if not (17 < self.age < 45):
+            raise UserError("Candidate's age must be in range 18-45.")
+
+
 
 class Recruitment_Convocatory(models.Model):
     _name = 'recruitment.convocatory'
@@ -28,6 +40,10 @@ class Recruitment_Convocatory(models.Model):
     candidate_ids = fields.One2many("res.partner", 'convocatory_id')
     job_id = fields.Many2many("convocatory.job")
     color = fields.Integer()
+
+    def cancel_convocatory(self):
+        self.state="C"
+        return True
 
 
 
@@ -57,4 +73,5 @@ class PlusTechs(models.Model):
     _description="Development enviroment tools"
 
     name = fields.Char()
+    color = fields.Integer()
 
